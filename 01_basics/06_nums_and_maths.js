@@ -1,8 +1,8 @@
 const score = new Number(67);
 
-console.log(score.toString().length);
+console.log(score.toString().length); // displays length of the number converted to string
 
-console.log(score.toFixed(2));
+console.log(score.toFixed(2)); 
 
 const otherNum = new Number(81.2345);
 
