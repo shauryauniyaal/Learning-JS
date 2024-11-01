@@ -9,6 +9,21 @@
     
 </body>
 <script>
+    const div = document.createElement('div')
+    console.log(div);
+    div.className = 'myClass'
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.style.color = "Red"
+    div.style.backgroundColor = "Yellow"
+    div.style.padding = "10px"
+    div.style.borderRadius = "15px"
+    div.setAttribute("title", "Name")
+
+    // div.innerText = "Shaurya Uniyal"
+    const addText = document.createTextNode("Shaurya Uniyal")
+    div.appendChild(addText)
+    document.body.appendChild(div)
+    
     
 </script>
 </html>
