@@ -18,23 +18,13 @@
     <button type="hide" class="hide">Hide</button>
 </body>
 <script>
-  const randomName = function(){
-    let abcd = "abcdefghijklmnopqrstuvwxyz"
-    let url = "https://api.github.com/users/"
-    for(i = 0; i < 10; i++){
-      url += abcd[Math.round(Math.random() * 26)]
-    }
-    return url;
-  }
-
-  let requestURL;
+  const requestURL = "https://api.github.com/users/shauryauniyaal"
     const xhr = new XMLHttpRequest();
     
 
     const showButton = document.querySelector('button')
 
     showButton.addEventListener('click', function(){
-      requestURL = randomName()
       xhr.open('GET', requestURL)
       xhr.send()
       xhr.onreadystatechange = function(){
@@ -65,11 +55,6 @@
         </div>`
         }
     })
-    
-    
-
-    
-    
+   
 </script>
-
 </html>
