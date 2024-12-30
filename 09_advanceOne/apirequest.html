@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body style="background-color: grey;">
+    <div class="card">
+        <img src="" alt="" style="width:100%">
+        <div class="container" >
+          <h4 ><b></b></h4>
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <button type="show">Show</button>
+    <button type="hide" class="hide">Hide</button>
+</body>
+<script>
+  const randomName = function(){
+    let abcd = "abcdefghijklmnopqrstuvwxyz"
+    let url = "https://api.github.com/users/"
+    for(i = 0; i < 10; i++){
+      url += abcd[Math.round(Math.random() * 26)]
+    }
+    return url;
+  }
+
+  let requestURL;
+    const xhr = new XMLHttpRequest();
+    
+
+    const showButton = document.querySelector('button')
+
+    showButton.addEventListener('click', function(){
+      requestURL = randomName()
+      xhr.open('GET', requestURL)
+      xhr.send()
+      xhr.onreadystatechange = function(){
+        if (xhr.readyState === 4){
+          const data = JSON.parse(this.responseText)
+          let card = document.querySelector('.card')
+          card.outerHTML = `<div class="card">
+          <img src="${data.avatar_url}" alt="${data.login}" style="width:10%">
+          <div class="container" >
+            <h4><b style="color:white">${data.name}</b></h4>
+            <p style="color:white">Followers : ${data.followers}</p>
+          </div>
+        </div>`
+        }
+      }
+    })
+    const hideButton = document.querySelector('.hide')
+    
+    hideButton.addEventListener('click', function(){
+      if (xhr.readyState === 4){
+          let card = document.querySelector('.card')
+          card.outerHTML = `<div class="card">
+          <img src="" alt="" style="width:10%">
+          <div class="container" >
+            <h4><b style="color:white"></b></h4>
+            <p style="color:white"></p>
+          </div>
+        </div>`
+        }
+    })
+    
+    
+
+    
+    
+</script>
+
+</html>
