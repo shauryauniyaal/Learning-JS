@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request 02</title>
+</head>
+<body style="background-color: #212121;">
+    
+</body>
+<script>
+    const url = "https://randomuser.me/api"
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', url)
+    xhr.send()
+    xhr.onreadystatechange = function(){
+        if (xhr.readyState == 4){
+            const data = JSON.parse(this.responseText)
+            let body = document.querySelector('body')
+            body.innerHTML = `<h2 style="color : white">${data.results[0].name.first} ${data.results[0].name.last}</h2>
+            <h4 style="color : white">${data.results[0].location.street.number}, ${data.results[0].location.street.name}, ${data.results[0].location.city}, ${data.results[0].location.state} - ${data.results[0].location.postcode}, ${data.results[0].location.country}</h4>
+            `
+        }
+    }
+</script>
+</html>
