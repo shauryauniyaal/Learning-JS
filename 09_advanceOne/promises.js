@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 // const promiseOne = new Promise(function(resolve, reject){
 //     console.log('Hello');
     
@@ -18,7 +20,7 @@
 // })
 
 const promiseThree = new Promise(function(resolve, reject){
-    error = false
+    const error = false
     if (!error){
         resolve({username: 'shaurya', password: 'abc123'})
     } else{
@@ -78,4 +80,30 @@ async function getData() {
     }
 }
 
-getData()
+async function getData2() {
+    try {
+        const response = await axios.get('https://randomuser.me/api')
+        console.log(response.data.results);
+        
+    } catch (error) {
+        console.log("E: ", error);
+        
+    }
+}
+
+// getData2()
+
+async function test()
+{
+    const res = await new Promise((res, rej) => {
+        setTimeout(() => {
+            res('hi')
+        }, 5000);
+    });
+
+    console.log('Hello World');
+    console.log(res);
+}
+
+test();
+console.log("heheheheheh")
